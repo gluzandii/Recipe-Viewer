@@ -5,7 +5,6 @@ type RecipeItemProps = {
     index: number;
     name: string;
     hash: string;
-    instructions: string;
     iconEmoji: string;
 }
 

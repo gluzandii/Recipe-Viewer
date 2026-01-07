@@ -1,0 +1,29 @@
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.step {
+  position: relative;
+  border: 2px solid lightgreen;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px auto; // Center the items and prevent overflow
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+  max-width: calc(100% - 20px); // Prevent overflow on both sides
+  box-sizing: border-box;
+}
+
+.step:hover {
+  box-shadow: 0 0 10px lightgreen;
+}
+
+.step h2 {
+  margin: 0;
+}
+
+.text {
+  white-space: pre-line;
+}
