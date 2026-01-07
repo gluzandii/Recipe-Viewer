@@ -1,69 +1,25 @@
-.recipes {
+.ingredient {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.recipeItem {
+.ingredientItem {
   position: relative;
   border: 2px solid lightblue;
   border-radius: 8px;
   padding: 15px;
   margin: 10px auto; // Center the items and prevent overflow
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
   overflow: hidden;
   max-width: calc(100% - 20px); // Prevent overflow on both sides
   box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
 }
 
-.recipeItem:hover {
-  transform: scale(1.02);
+.ingredientItem:hover {
   box-shadow: 0 0 10px lightblue;
 }
 
-.recipeItem h2 {
+.ingredientItem h2 {
   margin: 0;
-}
-
-.viewRecipe {
-  text-decoration: none;
-  font-size: 1rem;
-  padding: 0.6rem 1.4rem;
-  background-color: #057210;
-  color: white;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  //font-weight: 500;
-  transition: box-shadow 0.3s ease, transform 0.3s ease, filter 0.3s ease;
-}
-
-.viewRecipe:hover {
-  box-shadow: 0 0 12px rgba(0, 255, 150, 0.8), 0 0 24px rgba(0, 255, 150, 0.6);
-  transform: scale(1.05);
-  filter: brightness(1.15);
-}
-
-.viewIngredient {
-  text-decoration: none;
-  font-size: 1rem;
-  padding: 0.6rem 1.4rem;
-  background-color: #c62828;
-  color: white;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  //font-weight: 500;
-  transition: box-shadow 0.3s ease, transform 0.3s ease, filter 0.3s ease;
-}
-
-.viewIngredient:hover {
-  box-shadow: 0 0 12px rgba(255, 80, 80, 0.8), 0 0 24px rgba(255, 80, 80, 0.6);
-  transform: scale(1.05);
-  filter: brightness(1.15);
-}
-
-.foodButtons {
-  display: flex;
-  gap: 10px;
 }

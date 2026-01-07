@@ -3,4 +3,5 @@ export type Ingredient = {
     quantity: string;
     unit: string;
     notes?: string;
+    price?: string;
 }
