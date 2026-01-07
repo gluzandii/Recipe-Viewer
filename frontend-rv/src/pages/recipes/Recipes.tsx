@@ -1,5 +1,8 @@
 import type {RecipeItem} from "../../components/RecipeItem/RecipeItem.ts";
 
+import styles from "./Recipes.module.scss"
+import {Link} from "react-router-dom";
+
 export default function Recipes() {
     const recipes: RecipeItem[] = [
         {
@@ -16,14 +19,14 @@ export default function Recipes() {
     return (
         <div>
             <h1>Recipes</h1>
-            <ul>
+            <ol className={styles.recipes}>
                 {recipes.map((recipe, index) => (
-                    <li key={index}>
+                    <li key={index} className={styles.recipeItem}>
                         <h2>{recipe.iconEmoji} {recipe.name}</h2>
-                        <p>{recipe.instructions}</p>
+                        <Link to={`/recipes/aa`} className={styles.viewRecipe}>→</Link>
                     </li>
                 ))}
-            </ul>
+            </ol>
         </div>
     );
 }

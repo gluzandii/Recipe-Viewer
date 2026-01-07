@@ -2,7 +2,7 @@
 import {Route, Routes} from "react-router-dom";
 import Home from "./pages/home/Home.tsx";
 import Navbar from "./components/Navbar/Navbar.tsx";
-import Recipes from "./components/RecipeItem/RecipeItem.ts";
+import Recipes from "./pages/recipes/Recipes.tsx";
 
 export default function App() {
     return (
