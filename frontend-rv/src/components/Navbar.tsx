@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 
 export default function Navbar() {
-    const [loggedIn, setLoggedIn] = useState(true);
+    const [loggedIn] = useState(true);
     return (
         <nav className={navbarStyles.navbar}>
             <Link to="/" className={navbarStyles.navbarLink}>Home</Link>
