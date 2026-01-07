@@ -13,19 +13,8 @@ export default function Login() {
         return emailRegex.test(email);
     }, [email]);
 
-    // Password validation
-    const isPasswordValid = useMemo(() => {
-        if (password.length <= 5) return false;
+    const isLoginEnabled = isEmailValid && password.length > 0;
 
-        const hasLower = /[a-z]/.test(password);
-        const hasUpper = /[A-Z]/.test(password);
-        const hasNumber = /[0-9]/.test(password);
-
-        return hasLower && hasUpper && hasNumber;
-    }, [password]);
-
-    // Button enabled only if both validations pass
-    const isLoginEnabled = isEmailValid && isPasswordValid;
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -71,11 +60,6 @@ export default function Login() {
                             placeholder="Enter your password"
                             required
                         />
-                        {password && !isPasswordValid && (
-                            <span className={styles.error}>
-                                Password must be longer than 5 characters and contain at least one lowercase, one uppercase, and one number
-                            </span>
-                        )}
                     </div>
 
                     <button

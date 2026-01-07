@@ -6,6 +6,7 @@ import Recipes from "./pages/recipes/Recipes.tsx";
 import Ingredients from "./pages/ingredients/Ingredients.tsx";
 import Recipe from "./pages/recipe/Recipe.tsx";
 import Login from "./pages/login/Login.tsx";
+import Register from "./pages/register/Register.tsx";
 
 export default function App() {
     return (
@@ -17,7 +18,7 @@ export default function App() {
                 <Route path="/recipe/:recipeID" element={<Recipe/>}/>
                 <Route path="/ingredients/:ingredID" element={<Ingredients/>}/>
                 <Route path="/login" element={<Login/>}/>
-                <Route path={"/register"} element={<div>register</div>}/>
+                <Route path={"/register"} element={<Register/>}/>
                 <Route path="*" element={<div>not found</div>}/>
             </Routes>
         </main>
