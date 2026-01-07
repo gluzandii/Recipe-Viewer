@@ -1,5 +1,6 @@
 import {useParams} from "react-router-dom";
 import type {Ingredient} from "../../library/Ingredient.ts";
+import IngredientItem from "../../components/IngredientItem/IngredientItem.tsx";
 
 export default function Ingredients() {
     const {ingredID} = useParams<{ ingredID: string }>()
@@ -13,6 +14,10 @@ export default function Ingredients() {
     return (
         <div>
             <h1>Ingredients for {recipeName}</h1>
+            {ingreds.map((ingred, index) => (
+                <IngredientItem index={index + 1} name={ingred.name} quantity={ingred.quantity} unit={ingred.unit}
+                                notes={ingred.notes}/>
+            ))}
         </div>
     )
 }
