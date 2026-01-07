@@ -15,7 +15,10 @@ export default function RecipeItem(props: RecipeItemProps) {
         <ol className={styles.recipes}>
             <li key={index} className={styles.recipeItem}>
                 <h2>{iconEmoji} {name}</h2>
-                <Link to={`/recipes/${hash}`} className={styles.viewRecipe}>→</Link>
+                <div className={styles.foodButtons}>
+                    <Link to={`/ingredients/${hash}`} className={styles.viewIngredient}>🥦</Link>
+                    <Link to={`/recipe/${hash}`} className={styles.viewRecipe}>→</Link>
+                </div>
             </li>
         </ol>
     )

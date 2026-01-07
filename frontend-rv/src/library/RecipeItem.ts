@@ -1,4 +1,4 @@
-export type Recipe = {
+export type RecipeItem = {
     name: string;
     hash: string;
     instructions: string;

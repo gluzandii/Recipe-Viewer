@@ -11,6 +11,8 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/recipes" element={<Recipes/>}/>
+                <Route path="/recipe/:recipeID" element={<div>recipe</div>}/>
+                <Route path="/ingredients/:ingredID" element={<div>ingredients</div>}/>
                 <Route path="*" element={<div>not found</div>}/>
             </Routes>
         </main>
