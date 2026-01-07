@@ -6,7 +6,7 @@
 
 .step {
   position: relative;
-  border: 2px solid lightgreen;
+  border: 2px solid var(--border);
   border-radius: 8px;
   padding: 15px;
   margin: 10px auto; // Center the items and prevent overflow
@@ -14,10 +14,12 @@
   overflow: hidden;
   max-width: calc(100% - 20px); // Prevent overflow on both sides
   box-sizing: border-box;
+  background: var(--surface);
+  color: var(--text);
 }
 
 .step:hover {
-  box-shadow: 0 0 10px lightgreen;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.15);
 }
 
 .step h2 {

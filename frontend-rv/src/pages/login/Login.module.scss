@@ -7,13 +7,13 @@
 }
 
 .loginBox {
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 3rem;
   width: 100%;
   max-width: 450px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   animation: fadeIn 0.5s ease-out;
 }
 
@@ -22,7 +22,7 @@
   font-weight: 700;
   margin: 0 0 2rem 0;
   text-align: center;
-  color: #1f2937;
+  color: var(--text);
 }
 
 .loginForm {
@@ -40,30 +40,32 @@
 .label {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--muted);
 }
 
 .input {
   padding: 0.75rem 1rem;
   font-size: 1rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border);
   border-radius: 6px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
+  background: var(--surface);
+  color: var(--text);
 
   &::placeholder {
     color: #9ca3af;
   }
 
   &:focus {
-    border-color: #2563eb;
+    border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   }
 }
 
 .error {
   font-size: 0.85rem;
-  color: #dc2626;
+  color: var(--danger);
   margin-top: 0.25rem;
 }
 
@@ -72,7 +74,7 @@
   font-size: 1rem;
   font-weight: 600;
   color: white;
-  background-color: #2563eb;
+  background-color: var(--primary);
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -80,7 +82,7 @@
   margin-top: 0.5rem;
 
   &:hover:not(:disabled) {
-    background-color: #1d4ed8;
+    background-color: var(--primary-600);
     transform: translateY(-1px);
   }
 
@@ -101,16 +103,16 @@
   padding: 0.85rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
-  color: #2563eb;
+  color: var(--primary);
   background-color: transparent;
-  border: 2px solid #2563eb;
+  border: 2px solid var(--primary);
   border-radius: 6px;
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
   margin-top: 0.5rem;
 
   &:hover {
-    background-color: #2563eb;
+    background-color: var(--primary);
     color: white;
     transform: translateY(-1px);
   }
@@ -130,4 +132,3 @@
     transform: translateY(0);
   }
 }
-
