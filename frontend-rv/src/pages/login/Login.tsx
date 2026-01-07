@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {useMemo, useState} from 'react';
+import {Link} from 'react-router-dom';
 import styles from './Login.module.scss';
 
 export default function Login() {
@@ -84,6 +85,10 @@ export default function Login() {
                     >
                         Login
                     </button>
+
+                    <Link to="/register" className={styles.createAccountLink}>
+                        Create Account
+                    </Link>
                 </form>
             </div>
         </div>
