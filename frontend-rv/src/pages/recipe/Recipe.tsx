@@ -20,7 +20,7 @@ export default function Recipe() {
     return (
         <div>
             <h1 className={styles.recipe}>{recipe.iconEmoji} {recipe.name}</h1>
-            <Link to={`/ingredients/${recipeID}`} className={styles.ingredientButton}>Ingredients</Link>
+            <Link to={`/ingredients/${recipeID}`} className={styles.ingredientButton}>🥕 Ingredients</Link>
             {recipe.instructions.map((instruction, index) => (
                 <RecipeStep index={index} instruction={instruction}/>
             ))}

@@ -15,7 +15,7 @@ export default function RecipeItem(props: RecipeItemProps) {
             <li key={index} className={styles.recipeItem}>
                 <h2>{iconEmoji} {name}</h2>
                 <div className={styles.foodButtons}>
-                    <Link to={`/ingredients/${hash}`} className={styles.viewIngredient}>🥦</Link>
+                    <Link to={`/ingredients/${hash}`} className={styles.viewIngredient}>🥕</Link>
                     <Link to={`/recipe/${hash}`} className={styles.viewRecipe}>→</Link>
                 </div>
             </li>
