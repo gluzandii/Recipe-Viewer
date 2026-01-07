@@ -1,8 +1,8 @@
 // import './App.css'
 import {Route, Routes} from "react-router-dom";
 import Home from "./pages/home/Home.tsx";
-import Navbar from "./components/Navbar.tsx";
-import Recipes from "./pages/recipes/Recipes.tsx";
+import Navbar from "./components/Navbar/Navbar.tsx";
+import Recipes from "./components/RecipeItem/RecipeItem.ts";
 
 export default function App() {
     return (
