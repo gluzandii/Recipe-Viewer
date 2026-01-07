@@ -1,14 +1,25 @@
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import type {Recipe} from "../../library/Recipe.ts";
+
+import styles from "./Recipe.module.scss"
 
 export default function Recipe() {
     const {recipeID} = useParams<{ recipeID: string }>();
 
     const recipe: Recipe = {
         iconEmoji: "🍰",
-        name: "Sample Recipe",
+        name: "Cake",
         hash: recipeID ?? "sample-recipe",
-        instructions: "Mix all ingredients and bake for 30 minutes."
+        instructions: [
+            "one",
+            "two",
+            "three"
+        ]
     };
-    return <div>{recipeID}</div>;
+    return (
+        <div>
+            <h1 className={styles.recipe}>{recipe.iconEmoji} {recipe.name}</h1>
+            <Link to={`/ingredients/${recipeID}`} className={styles.ingredientButton}>Ingredients</Link>
+        </div>
+    )
 }
