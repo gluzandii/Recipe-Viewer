@@ -1,8 +1,8 @@
-import type {RecipeItem} from "../../library/RecipeItem.ts";
+import type {Recipe} from "../../library/Recipe.ts";
 import RecipeItem from "../../components/RecipeItem/RecipeItem.tsx";
 
 export default function Recipes() {
-    const recipes: RecipeItem[] = [
+    const recipes: Recipe[] = [
         {
             name: "Spaghetti Bolognese",
             instructions: "1. Cook spaghetti. 2. Prepare Bolognese sauce. 3. Combine and serve.",
