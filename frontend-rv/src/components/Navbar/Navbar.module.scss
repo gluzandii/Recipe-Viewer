@@ -2,14 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 0;
+  padding: 1rem;
   gap: 2rem;
   position: sticky;
-  top: 0;
+  top: 1.5%;
   z-index: 1000;
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: 6px;
+  margin: 0 30px 20px;
 }
 
 .navbarLink {

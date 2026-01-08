@@ -10,7 +10,7 @@ import Register from "./pages/register/Register.tsx";
 
 export default function App() {
     return (
-        <main>
+        <>
             <Navbar/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
@@ -21,7 +21,7 @@ export default function App() {
                 <Route path={"/register"} element={<Register/>}/>
                 <Route path="*" element={<div>not found</div>}/>
             </Routes>
-        </main>
+        </>
     );
 }
 

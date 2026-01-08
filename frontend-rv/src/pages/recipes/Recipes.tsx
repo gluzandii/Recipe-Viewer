@@ -26,11 +26,107 @@ export default function Recipes() {
             ],
             hash: "chicken-curry-001",
             iconEmoji: "🍛"
-        }
+        },
+        {
+            name: "Chicken Curry",
+            instructions: [
+                "1. Sauté onions, garlic, and ginger in a pot.",
+                "2. Add chicken pieces and cook until browned.",
+                "3. Stir in curry powder and cook for 2 minutes.",
+                "4. Add coconut milk and simmer until chicken is cooked through.",
+                "5. Serve with rice and garnish with fresh cilantro."
+            ],
+            hash: "chicken-curry-001",
+            iconEmoji: "🍛"
+        },
+        {
+            name: "Chicken Curry",
+            instructions: [
+                "1. Sauté onions, garlic, and ginger in a pot.",
+                "2. Add chicken pieces and cook until browned.",
+                "3. Stir in curry powder and cook for 2 minutes.",
+                "4. Add coconut milk and simmer until chicken is cooked through.",
+                "5. Serve with rice and garnish with fresh cilantro."
+            ],
+            hash: "chicken-curry-001",
+            iconEmoji: "🍛"
+        },
+        {
+            name: "Chicken Curry",
+            instructions: [
+                "1. Sauté onions, garlic, and ginger in a pot.",
+                "2. Add chicken pieces and cook until browned.",
+                "3. Stir in curry powder and cook for 2 minutes.",
+                "4. Add coconut milk and simmer until chicken is cooked through.",
+                "5. Serve with rice and garnish with fresh cilantro."
+            ],
+            hash: "chicken-curry-001",
+            iconEmoji: "🍛"
+        },
+        {
+            name: "Chicken Curry",
+            instructions: [
+                "1. Sauté onions, garlic, and ginger in a pot.",
+                "2. Add chicken pieces and cook until browned.",
+                "3. Stir in curry powder and cook for 2 minutes.",
+                "4. Add coconut milk and simmer until chicken is cooked through.",
+                "5. Serve with rice and garnish with fresh cilantro."
+            ],
+            hash: "chicken-curry-001",
+            iconEmoji: "🍛"
+        },
+        {
+            name: "Chicken Curry",
+            instructions: [
+                "1. Sauté onions, garlic, and ginger in a pot.",
+                "2. Add chicken pieces and cook until browned.",
+                "3. Stir in curry powder and cook for 2 minutes.",
+                "4. Add coconut milk and simmer until chicken is cooked through.",
+                "5. Serve with rice and garnish with fresh cilantro."
+            ],
+            hash: "chicken-curry-001",
+            iconEmoji: "🍛"
+        },
+        {
+            name: "Chicken Curry",
+            instructions: [
+                "1. Sauté onions, garlic, and ginger in a pot.",
+                "2. Add chicken pieces and cook until browned.",
+                "3. Stir in curry powder and cook for 2 minutes.",
+                "4. Add coconut milk and simmer until chicken is cooked through.",
+                "5. Serve with rice and garnish with fresh cilantro."
+            ],
+            hash: "chicken-curry-001",
+            iconEmoji: "🍛"
+        },
+        {
+            name: "Chicken Curry",
+            instructions: [
+                "1. Sauté onions, garlic, and ginger in a pot.",
+                "2. Add chicken pieces and cook until browned.",
+                "3. Stir in curry powder and cook for 2 minutes.",
+                "4. Add coconut milk and simmer until chicken is cooked through.",
+                "5. Serve with rice and garnish with fresh cilantro."
+            ],
+            hash: "chicken-curry-001",
+            iconEmoji: "🍛"
+        },
+        {
+            name: "Chicken Curry",
+            instructions: [
+                "1. Sauté onions, garlic, and ginger in a pot.",
+                "2. Add chicken pieces and cook until browned.",
+                "3. Stir in curry powder and cook for 2 minutes.",
+                "4. Add coconut milk and simmer until chicken is cooked through.",
+                "5. Serve with rice and garnish with fresh cilantro."
+            ],
+            hash: "chicken-curry-001",
+            iconEmoji: "🍛"
+        },
     ]
     return (
         <div>
-            <h1>Recipes</h1>
+            <h1 style={{marginLeft: "1%"}}>Recipes</h1>
             <div>
                 {recipes.map((recipe, index) => (
                     <RecipeItem index={index} name={recipe.name}

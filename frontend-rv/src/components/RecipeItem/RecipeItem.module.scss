@@ -2,26 +2,28 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
 }
 
 .recipeItem {
   position: relative;
-  border: 2px solid var(--border);
+  border: 2px solid rgba(34, 211, 238, 0.5);
   border-radius: 8px;
   padding: 15px;
   margin: 10px auto; // Center the items and prevent overflow
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
-  max-width: calc(100% - 20px); // Prevent overflow on both sides
+  max-width: calc(100% - 32px); // Extra safety margin to prevent hover overflow
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   background: var(--surface);
+  will-change: transform;
 }
 
 .recipeItem:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.15);
+  transform: scale(1.01);
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.45);
 }
 
 .recipeItem h2 {

@@ -10,7 +10,6 @@ export default function Navbar() {
         <nav className={navbarStyles.navbar}>
             <Link to="/" className={navbarStyles.navbarLink}>Home</Link>
             <Link to="/recipes" className={navbarStyles.navbarLink}>Recipes</Link>
-            {/*<Link to="/ingredients" className={navbarStyles.navbarLink}>Ingredients</Link>*/}
             <button className={navbarStyles.themeToggle} onClick={toggleTheme} aria-label="Toggle theme">
                 {theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
             </button>
