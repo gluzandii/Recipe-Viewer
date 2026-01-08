@@ -87,3 +87,65 @@
   cursor: not-allowed;
 }
 
+.ingredientsHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addButton {
+  padding: 0.5rem 0.9rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: transparent;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.addButton:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.ingredientsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ingredientRow {
+  padding: 0.75rem;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.invalidRow {
+  border-color: var(--danger);
+}
+
+.rowGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 0.9fr 1.2fr 0.9fr;
+  gap: 0.5rem;
+}
+
+.removeButton {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--danger);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .rowGrid {
+    grid-template-columns: 1fr;
+  }
+}
