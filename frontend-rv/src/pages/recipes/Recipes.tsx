@@ -14,7 +14,7 @@ export default function Recipes() {
 
     useEffect(() => {
         const fetchRecipes = async () => {
-            const response = await fetch('http://localhost:3000/api/recipes', {
+            const response = await fetch('/api/recipes', {
                 method: 'GET',
                 credentials: 'include',
                 headers: {

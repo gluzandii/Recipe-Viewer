@@ -5,7 +5,7 @@ export interface User {
 }
 
 export async function useAuthUser() {
-    const user = await fetch('http://localhost:3000/api/auth/me', {
+    const user = await fetch('/api/auth/me', {
         credentials: 'include',
         method: 'GET'
     });

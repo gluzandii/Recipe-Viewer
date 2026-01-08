@@ -55,7 +55,7 @@ export default function NewRecipe() {
                 ingredients: ingredients.filter((ing) => ing.name?.trim() || ing.quantity?.trim() || ing.unit?.trim()),
             };
 
-            const res = await fetch("http://localhost:3000/api/recipes/create", {
+            const res = await fetch("/api/recipes/create", {
                 method: "POST",
                 credentials: "include",
                 headers: {"Content-Type": "application/json"},

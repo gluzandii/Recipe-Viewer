@@ -25,7 +25,7 @@ export default function RecipeItem(props: RecipeItemProps) {
         const ok = window.confirm("Delete this recipe? This action cannot be undone.");
         if (!ok) return;
         try {
-            const res = await fetch(`http://localhost:3000/api/recipes/${id}`, {
+            const res = await fetch(`/api/recipes/${id}`, {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: {

@@ -28,7 +28,7 @@ export default function Register() {
         if (!isCreateEnabled) return;
 
         try {
-            const url = `http://localhost:3000/api/auth/register`;
+            const url = `/api/auth/register`;
             const response = await fetch(url, {
                 method: 'POST',
                 credentials: 'include',

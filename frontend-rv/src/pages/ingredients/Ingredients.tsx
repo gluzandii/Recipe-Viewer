@@ -22,7 +22,7 @@ export default function Ingredients() {
 
     useEffect(() => {
         const fetchRecipes = async () => {
-            const response = await fetch(`http://localhost:3000/api/ingredients/${ingredId}`, {
+            const response = await fetch(`/api/ingredients/${ingredId}`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: {

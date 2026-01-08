@@ -21,7 +21,7 @@ export default function Login() {
         if (isLoginEnabled) {
             try {
 
-                const url = `http://localhost:3000/api/auth/login`;
+                const url = `/api/auth/login`;
                 const response = await fetch(url, {
                     method: 'POST',
                     credentials: 'include',

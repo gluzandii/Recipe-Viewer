@@ -5,7 +5,7 @@ import {useAuthUser} from "../../library/auth.ts";
 import {useState} from "react";
 
 async function logout() {
-    const url = `http://localhost:3000/api/auth/logout`;
+    const url = `/api/auth/logout`;
     await fetch(url, {
         method: 'POST',
         credentials: 'include',
