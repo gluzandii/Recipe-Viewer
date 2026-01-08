@@ -1,5 +1,5 @@
 {
-  "id": "da88f150-9cbf-4a7a-a55f-f33f14520d57",
+  "id": "819655aa-6be1-48a8-bec9-77d45cd91563",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -10,7 +10,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "bigint",
+          "type": "integer",
           "primaryKey": true,
           "notNull": true,
           "identity": {
@@ -20,7 +20,7 @@
             "increment": "1",
             "startWith": "1",
             "minValue": "1",
-            "maxValue": "9223372036854775807",
+            "maxValue": "2147483647",
             "cache": "1",
             "cycle": false
           }
@@ -115,7 +115,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "bigint",
+          "type": "integer",
           "primaryKey": true,
           "notNull": true,
           "identity": {
@@ -125,7 +125,7 @@
             "increment": "1",
             "startWith": "1",
             "minValue": "1",
-            "maxValue": "9223372036854775807",
+            "maxValue": "2147483647",
             "cache": "1",
             "cycle": false
           }
@@ -194,7 +194,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "bigint",
+          "type": "integer",
           "primaryKey": true,
           "notNull": true,
           "identity": {
@@ -204,7 +204,7 @@
             "increment": "1",
             "startWith": "1",
             "minValue": "1",
-            "maxValue": "9223372036854775807",
+            "maxValue": "2147483647",
             "cache": "1",
             "cycle": false
           }

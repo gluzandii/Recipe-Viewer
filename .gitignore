@@ -3,3 +3,5 @@
 check
 lint
 dev
+build
+start

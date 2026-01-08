@@ -1,9 +1,9 @@
-import {bigint, index, pgTable, text, unique,} from "drizzle-orm/pg-core";
+import {bigint, index, integer, pgTable, text, unique} from "drizzle-orm/pg-core";
 import {sql} from "drizzle-orm";
 
 // USERS
 export const users = pgTable("users", {
-    id: bigint("id", {mode: "bigint"})
+    id: integer("id")
         .primaryKey()
         .generatedAlwaysAsIdentity(),
 
@@ -16,7 +16,7 @@ export const users = pgTable("users", {
 export const recipes = pgTable(
     "recipes",
     {
-        id: bigint("id", {mode: "bigint"})
+        id: integer("id")
             .primaryKey()
             .generatedAlwaysAsIdentity(),
 
@@ -41,7 +41,7 @@ export const recipes = pgTable(
 export const recipeIngredients = pgTable(
     "recipe_ingredients",
     {
-        id: bigint("id", {mode: "bigint"})
+        id: integer("id")
             .primaryKey()
             .generatedAlwaysAsIdentity(),
 
