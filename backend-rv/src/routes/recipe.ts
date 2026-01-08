@@ -2,6 +2,7 @@ import {Router, Router as ExpressRouter} from "express";
 import {requireAuth} from "../middleware/auth.js";
 import {db} from "../db/index.js";
 import {recipeIngredients, recipes} from "../db/schema.js";
+import {and, eq} from "drizzle-orm";
 
 export const recipeRouter: ExpressRouter = Router();
 
@@ -69,4 +70,52 @@ recipeRouter.post("/create", requireAuth, async (req, res) => {
         console.error("Error creating recipe:", error);
         res.status(500).json({error: "Failed to create recipe"});
     }
-})
+});
+
+// GET /recipes/:id - Get a specific recipe by ID (only if it belongs to the logged-in user)
+recipeRouter.get("/:id", requireAuth, async (req, res) => {
+    try {
+        const userId = (req as any).userId;
+        const recipeId = parseInt(req.params.id || "0", 10);
+
+        if (isNaN(recipeId) || recipeId <= 0) {
+            return res.status(400).json({error: "Invalid recipe ID. Recipe not available or an error occurred."});
+        }
+
+        // Fetch recipe with user validation
+        const recipe = await db.query.recipes.findFirst({
+            where: and(eq(recipes.id, recipeId), eq(recipes.userId, userId)),
+            with: {
+                recipeIngredients: true,
+            },
+        });
+
+        if (!recipe) {
+            return res.status(404).json({error: "Recipe not found"});
+        }
+
+        res.status(200).json(recipe);
+    } catch (error) {
+        console.error("Error fetching recipe:", error);
+        res.status(500).json({error: "Failed to fetch recipe"});
+    }
+});
+
+// GET /recipes - Get all recipes for the currently logged-in user
+recipeRouter.get("/", requireAuth, async (req, res) => {
+    try {
+        const userId = (req as any).userId;
+
+        const userRecipes = await db.query.recipes.findMany({
+            where: eq(recipes.userId, userId),
+            with: {
+                recipeIngredients: true,
+            },
+        });
+
+        res.status(200).json(userRecipes);
+    } catch (error) {
+        console.error("Error fetching recipes:", error);
+        res.status(500).json({error: "Failed to fetch recipes"});
+    }
+});

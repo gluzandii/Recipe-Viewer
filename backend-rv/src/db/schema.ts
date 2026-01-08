@@ -1,5 +1,5 @@
 import {index, integer, pgTable, text, unique} from "drizzle-orm/pg-core";
-import {sql} from "drizzle-orm";
+import {relations, sql} from "drizzle-orm";
 
 // USERS
 export const users = pgTable("users", {
@@ -70,3 +70,24 @@ export const recipeIngredients = pgTable(
         ),
     })
 );
+
+// RELATIONS
+export const usersRelations = relations(users, ({many}) => ({
+    recipes: many(recipes),
+}));
+
+export const recipesRelations = relations(recipes, ({one, many}) => ({
+    user: one(users, {
+        fields: [recipes.userId],
+        references: [users.id],
+    }),
+    recipeIngredients: many(recipeIngredients),
+}));
+
+export const recipeIngredientsRelations = relations(recipeIngredients, ({one}) => ({
+    recipe: one(recipes, {
+        fields: [recipeIngredients.recipeId],
+        references: [recipes.id],
+    }),
+}));
+
