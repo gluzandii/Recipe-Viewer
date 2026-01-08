@@ -69,3 +69,20 @@
   display: flex;
   gap: 10px;
 }
+
+.deleteRecipe {
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  background-color: var(--danger);
+  color: white;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+
+.deleteRecipe:hover {
+  box-shadow: 0 0 12px rgba(220, 38, 38, 0.5), 0 0 24px rgba(220, 38, 38, 0.35);
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
