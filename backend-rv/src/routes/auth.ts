@@ -140,3 +140,38 @@ authRouter.get("/me", requireAuth, async (req, res) => {
 
     return res.json({user});
 });
+
+/**
+ * DELETE /auth/delete
+ * response: { message: "Account deleted successfully" }
+ * requires: valid session cookie
+ * side-effect: deletes user account and all associated recipes/ingredients
+ */
+authRouter.delete("/delete", requireAuth, async (req, res) => {
+    try {
+        const userId = (req as any).userId;
+
+        // Verify user exists
+        const [user] = await db
+            .select({id: users.id})
+            .from(users)
+            .where(eq(users.id, userId))
+            .limit(1);
+
+        if (!user) {
+            return res.status(404).json({error: "User not found"});
+        }
+
+        // Delete user (cascades to delete all recipes and ingredients)
+        await db.delete(users).where(eq(users.id, userId));
+
+        // Clear the session cookie
+        res.clearCookie("session");
+
+        return res.status(200).json({message: "Account deleted successfully"});
+    } catch (error) {
+        console.error("Error deleting account:", error);
+        return res.status(500).json({error: "Failed to delete account"});
+    }
+});
+

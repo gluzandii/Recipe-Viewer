@@ -119,3 +119,33 @@ recipeRouter.get("/", requireAuth, async (req, res) => {
         res.status(500).json({error: "Failed to fetch recipes"});
     }
 });
+
+// DELETE /recipes/:id - Delete a recipe by ID (only if it belongs to the logged-in user)
+recipeRouter.delete("/:id", requireAuth, async (req, res) => {
+    try {
+        const userId = (req as any).userId;
+        const recipeId = parseInt(req.params.id || "0", 10);
+
+        if (isNaN(recipeId) || recipeId <= 0) {
+            return res.status(400).json({error: "Invalid recipe ID"});
+        }
+
+        // Check if the recipe exists and belongs to the user
+        const recipe = await db.query.recipes.findFirst({
+            where: and(eq(recipes.id, recipeId), eq(recipes.userId, userId)),
+        });
+
+        if (!recipe) {
+            return res.status(404).json({error: "Recipe not found"});
+        }
+
+        // Delete the recipe (ingredients will be deleted automatically due to CASCADE)
+        await db.delete(recipes).where(eq(recipes.id, recipeId));
+
+        res.status(200).json({message: "Recipe deleted successfully"});
+    } catch (error) {
+        console.error("Error deleting recipe:", error);
+        res.status(500).json({error: "Failed to delete recipe"});
+    }
+});
+
