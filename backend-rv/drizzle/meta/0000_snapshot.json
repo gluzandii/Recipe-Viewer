@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "id": "0d5e5861-526a-4b9d-850c-8a0eb4dea0a2",
+=======
+  "id": "819655aa-6be1-48a8-bec9-77d45cd91563",
+>>>>>>> 1b462fd (Adds user authentication middleware)
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
