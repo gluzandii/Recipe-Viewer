@@ -3,24 +3,17 @@ import {requireAuth} from "../middleware/auth.js";
 import {db} from "../db/index.js";
 import {recipeIngredients, recipes} from "../db/schema.js";
 import {and, eq} from "drizzle-orm";
+import Ingredient from "../utils/ingredient.js";
 
-export const recipeRouter: ExpressRouter = Router();
-
-interface IngredientInput {
-    name: string;
-    quantity: string;
-    unit: string;
-    price?: string;
-    notes?: string;
-}
+export const recipesRouter: ExpressRouter = Router();
 
 interface CreateRecipeBody {
     name: string;
     instructions: string[];
-    ingredients: IngredientInput[];
+    ingredients: Ingredient[];
 }
 
-recipeRouter.post("/create", requireAuth, async (req, res) => {
+recipesRouter.post("/create", requireAuth, async (req, res) => {
     try {
         const userId = (req as any).userId;
         const {name, instructions, ingredients} = req.body as CreateRecipeBody;
@@ -73,7 +66,7 @@ recipeRouter.post("/create", requireAuth, async (req, res) => {
 });
 
 // GET /recipes/:id - Get a specific recipe by ID (only if it belongs to the logged-in user)
-recipeRouter.get("/:id", requireAuth, async (req, res) => {
+recipesRouter.get("/:id", requireAuth, async (req, res) => {
     try {
         const userId = (req as any).userId;
         const recipeId = parseInt(req.params.id || "0", 10);
@@ -102,7 +95,7 @@ recipeRouter.get("/:id", requireAuth, async (req, res) => {
 });
 
 // GET /recipes - Get all recipes for the currently logged-in user
-recipeRouter.get("/", requireAuth, async (req, res) => {
+recipesRouter.get("/", requireAuth, async (req, res) => {
     try {
         const userId = (req as any).userId;
 
@@ -121,7 +114,7 @@ recipeRouter.get("/", requireAuth, async (req, res) => {
 });
 
 // DELETE /recipes/:id - Delete a recipe by ID (only if it belongs to the logged-in user)
-recipeRouter.delete("/:id", requireAuth, async (req, res) => {
+recipesRouter.delete("/:id", requireAuth, async (req, res) => {
     try {
         const userId = (req as any).userId;
         const recipeId = parseInt(req.params.id || "0", 10);
