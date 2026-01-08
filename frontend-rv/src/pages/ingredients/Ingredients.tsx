@@ -52,11 +52,16 @@ export default function Ingredients() {
             return (
                 <div className={styles.ingredientsPage}>
                     <h1 className={styles.title}>Ingredients</h1>
-                    {ingreds.map((ingred, index) => (
-                        <IngredientItem index={index + 1} name={ingred.name} quantity={ingred.quantity}
-                                        unit={ingred.unit}
-                                        notes={ingred.notes} price={ingred.price}/>
-                    ))}
+                    {ingreds.length === 0 ? (
+                        <Message variant="info" title="No ingredients for this recipe"
+                                 description="This recipe has no ingredients, create a new recipe with some ingredients in it."/>
+                    ) : (
+                        ingreds.map((ingred, index) => (
+                            <IngredientItem index={index + 1} name={ingred.name} quantity={ingred.quantity}
+                                            unit={ingred.unit}
+                                            notes={ingred.notes} price={ingred.price}/>
+                        ))
+                    )}
                     <Link to={`/recipe/${ingredID}`}>
                         <button className={styles.backButton}>🍽️ Back to Recipe</button>
                     </Link>

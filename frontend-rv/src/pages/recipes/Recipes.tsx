@@ -36,6 +36,10 @@ export default function Recipes() {
         if (message) {
             return <Message variant="error" title="Couldn't load recipes" description={message}/>;
         } else {
+            if (recipes.length === 0) {
+                return <Message variant="info" title="No recipes yet"
+                                description="Create your first recipe to get started."/>;
+            }
             return (
                 <div>
                     <h1 style={{marginLeft: "1%"}}>Recipes</h1>

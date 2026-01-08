@@ -47,9 +47,14 @@ export default function Recipe() {
                 <div>
                     <h1 className={styles.recipe}>{name}</h1>
                     <Link to={`/ingredients/${recipeID}`} className={styles.ingredientButton}>🥕Ingredients</Link>
-                    {instrs.map((instruction, index) => (
-                        <RecipeStep index={index} instruction={instruction}/>
-                    ))}
+                    {instrs.length === 0 ? (
+                        <Message variant="info" title="No steps yet"
+                                 description="This recipe doesn't have any steps. Add some instructions to get started."/>
+                    ) : (
+                        instrs.map((instruction, index) => (
+                            <RecipeStep index={index} instruction={instruction}/>
+                        ))
+                    )}
                 </div>
             )
         }
