@@ -4,11 +4,13 @@ import type {Recipe} from "../../library/Recipe.ts";
 import Loading from "../../components/Loading/Loading";
 import Message from "../../components/Message/Message";
 import {Link} from "react-router-dom";
+import {getFavorites} from "../../library/favorites.ts";
 
 export default function Recipes() {
     const [recipes, setRecipes] = useState<Recipe[]>([]); // TODO: Fetch recipes from backend
     const [loading, setLoading] = useState(true);
     const [message, setMessage] = useState("");
+    const [favorites, setFavorites] = useState<Set<number>>(() => getFavorites());
 
     useEffect(() => {
         const fetchRecipes = async () => {
@@ -30,6 +32,11 @@ export default function Recipes() {
 
         fetchRecipes().then();
     }, [])
+
+    const handleFavoriteToggle = () => {
+        // Refresh favorites from localStorage
+        setFavorites(getFavorites());
+    };
 
     if (loading) {
         return <Loading text="Loading recipes..."/>;
@@ -70,8 +77,15 @@ export default function Recipes() {
                     ) : (
                         <div>
                             {recipes.map((recipe, index) => (
-                                <RecipeItem index={index} name={recipe.name}
-                                            id={recipe.id} iconEmoji={recipe.iconEmoji}/>
+                                <RecipeItem
+                                    key={recipe.id}
+                                    index={index}
+                                    name={recipe.name}
+                                    id={recipe.id}
+                                    iconEmoji={recipe.iconEmoji}
+                                    isFavorite={favorites.has(recipe.id)}
+                                    onFavoriteToggle={handleFavoriteToggle}
+                                />
                             ))}
                         </div>
                     )}
