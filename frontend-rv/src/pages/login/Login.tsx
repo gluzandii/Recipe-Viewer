@@ -1,11 +1,16 @@
 import * as React from 'react';
 import {useMemo, useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
+import {useAuth} from '../../library/auth.tsx';
 import styles from './Login.module.scss';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const {login} = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = (location.state as { from?: Location })?.from?.pathname || '/';
 
     // Email validation
     const isEmailValid = useMemo(() => {
@@ -19,8 +24,9 @@ export default function Login() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (isLoginEnabled) {
-            console.log('Login submitted', {email, password});
-            // Logic Here
+            // Fake auth success, normally you would call your backend here
+            login({name: email.split('@')[0], email});
+            navigate(from, {replace: true});
         }
     };
 
