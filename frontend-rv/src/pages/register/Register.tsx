@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useMemo, useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import styles from './Register.module.scss';
 
 function isValidEmail(email: string): boolean {
@@ -16,7 +16,6 @@ export default function Register() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
 
     const isEmailValid = useMemo(() => isValidEmail(email), [email]);
     const isNameValid = useMemo(() => name.trim().length > 0, [name]);
@@ -24,11 +23,33 @@ export default function Register() {
 
     const isCreateEnabled = isEmailValid && isNameValid && isPasswordValid;
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!isCreateEnabled) return;
-        // TODO: Hook up to actual registration API
-        navigate('/');
+
+        try {
+            const url = `http://localhost:3000/api/auth/register`;
+            const response = await fetch(url, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({name, email, password}),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Registration failed:', errorData);
+                // TODO: Show error message to user
+                return;
+            }
+
+            // Navigate to home page and refresh
+            window.location.href = '/';
+        } catch (err) {
+            console.error('Error during registration:', err);
+        }
     };
 
     return (
