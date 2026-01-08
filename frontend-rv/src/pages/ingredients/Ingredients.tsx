@@ -3,6 +3,8 @@ import type {Ingredient} from "../../library/Ingredient.ts";
 import IngredientItem from "../../components/IngredientItem/IngredientItem.tsx";
 import styles from "./Ingredients.module.scss";
 import {useEffect, useState} from "react";
+import Loading from "../../components/Loading/Loading";
+import Message from "../../components/Message/Message";
 
 export default function Ingredients() {
     const {ingredID} = useParams<{ ingredID: string }>()
@@ -42,18 +44,10 @@ export default function Ingredients() {
     }, [ingredId]);
 
     if (loading) {
-        return (
-            <div>
-                <p>Loading...</p>
-            </div>
-        );
+        return <Loading text="Loading ingredients..."/>;
     } else {
         if (message) {
-            return (
-                <div>
-                    <p>{message}</p>
-                </div>
-            );
+            return <Message variant="error" title="Couldn't load ingredients" description={message}/>;
         } else {
             return (
                 <div className={styles.ingredientsPage}>

@@ -1,6 +1,8 @@
 import RecipeItem from "../../components/RecipeItem/RecipeItem.tsx";
 import {useEffect, useState} from "react";
 import type {Recipe} from "../../library/Recipe.ts";
+import Loading from "../../components/Loading/Loading";
+import Message from "../../components/Message/Message";
 
 export default function Recipes() {
     const [recipes, setRecipes] = useState<Recipe[]>([]); // TODO: Fetch recipes from backend
@@ -29,18 +31,10 @@ export default function Recipes() {
     }, [])
 
     if (loading) {
-        return (
-            <div>
-                <p>Loading...</p>
-            </div>
-        );
+        return <Loading text="Loading recipes..."/>;
     } else {
         if (message) {
-            return (
-                <div>
-                    <p>{message}</p>
-                </div>
-            );
+            return <Message variant="error" title="Couldn't load recipes" description={message}/>;
         } else {
             return (
                 <div>

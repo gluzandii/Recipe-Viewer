@@ -3,6 +3,8 @@ import {Link, useParams} from "react-router-dom";
 import styles from "./Recipe.module.scss"
 import RecipeStep from "../../components/RecipeStep/RecipeStep.tsx";
 import {useEffect, useState} from "react";
+import Loading from "../../components/Loading/Loading";
+import Message from "../../components/Message/Message";
 
 export default function Recipe() {
     const {recipeID} = useParams<{ recipeID: string }>();
@@ -36,18 +38,10 @@ export default function Recipe() {
     }, [recId])
 
     if (loading) {
-        return (
-            <div>
-                <p>Loading...</p>
-            </div>
-        );
+        return <Loading text="Loading recipe..."/>;
     } else {
         if (message) {
-            return (
-                <div>
-                    <p>{message}</p>
-                </div>
-            );
+            return <Message variant="error" title="Couldn't load recipe" description={message}/>;
         } else {
             return (
                 <div>
