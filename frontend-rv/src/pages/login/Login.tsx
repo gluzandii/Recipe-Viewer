@@ -1,16 +1,11 @@
 import * as React from 'react';
 import {useMemo, useState} from 'react';
-import {Link, useLocation, useNavigate} from 'react-router-dom';
-import {useAuth} from '../../library/auth.tsx';
+import {Link} from 'react-router-dom';
 import styles from './Login.module.scss';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const {login} = useAuth();
-    const navigate = useNavigate();
-    const location = useLocation();
-    const from = (location.state as { from?: Location })?.from?.pathname || '/';
 
     // Email validation
     const isEmailValid = useMemo(() => {
@@ -21,12 +16,32 @@ export default function Login() {
     const isLoginEnabled = isEmailValid && password.length > 0;
 
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (isLoginEnabled) {
-            // Fake auth success, normally you would call your backend here
-            login({name: email.split('@')[0], email});
-            navigate(from, {replace: true});
+            try {
+
+                const url = `http://localhost:3000/api/auth/login`;
+                const response = await fetch(url, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({email, password}),
+                });
+
+                if (!response.ok) {
+                    // Handle error response
+                    console.error('Login failed');
+                    return;
+                }
+
+                // Navigate to home page and refresh
+                window.location.href = '/';
+            } catch (err) {
+                console.error('Error during login:', err);
+            }
         }
     };
 

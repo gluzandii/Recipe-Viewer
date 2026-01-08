@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {useMemo, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import {useAuth} from '../../library/auth.tsx';
 import styles from './Register.module.scss';
 
 function isValidEmail(email: string): boolean {
@@ -17,7 +16,6 @@ export default function Register() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
-    const {login} = useAuth();
     const navigate = useNavigate();
 
     const isEmailValid = useMemo(() => isValidEmail(email), [email]);
@@ -30,7 +28,6 @@ export default function Register() {
         e.preventDefault();
         if (!isCreateEnabled) return;
         // TODO: Hook up to actual registration API
-        login({email, name});
         navigate('/');
     };
 

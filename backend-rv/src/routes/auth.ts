@@ -107,6 +107,8 @@ authRouter.post("/login", async (req, res) => {
 
     res.cookie("session", token, {
         httpOnly: true,
+        secure: false,
+        sameSite: 'lax',
         path: "/",
         maxAge: 7 * 24 * 60 * 60 * 1000,
     });
@@ -114,6 +116,20 @@ authRouter.post("/login", async (req, res) => {
     return res.json({
         user: {id: user.id, name: user.name, email: user.email},
     });
+});
+
+/**
+ * POST /auth/logout
+ * response: { message: "Logged out successfully" }
+ * side-effect: clears session cookie
+ */
+authRouter.post("/logout", (req, res) => {
+    res.clearCookie("session", {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: "/",
+    });
+    return res.json({message: "Logged out successfully"});
 });
 
 /**

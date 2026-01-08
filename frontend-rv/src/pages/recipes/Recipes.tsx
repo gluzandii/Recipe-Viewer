@@ -1,138 +1,58 @@
-import type {Recipe} from "../../library/Recipe.ts";
 import RecipeItem from "../../components/RecipeItem/RecipeItem.tsx";
+import {useEffect, useState} from "react";
+import type {Recipe} from "../../library/Recipe.ts";
 
 export default function Recipes() {
-    const recipes: Recipe[] = [
-        {
-            name: "Spaghetti Bolognese",
-            instructions: [
-                "1. Cook spaghetti according to package instructions.",
-                "2. In a separate pan, sauté onions and garlic.",
-                "3. Add ground beef and cook until browned.",
-                "4. Stir in tomato sauce and simmer for 20 minutes.",
-                "5. Serve sauce over spaghetti and garnish with Parmesan cheese."
-            ],
-            hash: "spaghetti-bolognese-001",
-            iconEmoji: "🍝"
-        },
-        {
-            name: "Chicken Curry",
-            instructions: [
-                "1. Sauté onions, garlic, and ginger in a pot.",
-                "2. Add chicken pieces and cook until browned.",
-                "3. Stir in curry powder and cook for 2 minutes.",
-                "4. Add coconut milk and simmer until chicken is cooked through.",
-                "5. Serve with rice and garnish with fresh cilantro."
-            ],
-            hash: "chicken-curry-001",
-            iconEmoji: "🍛"
-        },
-        {
-            name: "Chicken Curry",
-            instructions: [
-                "1. Sauté onions, garlic, and ginger in a pot.",
-                "2. Add chicken pieces and cook until browned.",
-                "3. Stir in curry powder and cook for 2 minutes.",
-                "4. Add coconut milk and simmer until chicken is cooked through.",
-                "5. Serve with rice and garnish with fresh cilantro."
-            ],
-            hash: "chicken-curry-001",
-            iconEmoji: "🍛"
-        },
-        {
-            name: "Chicken Curry",
-            instructions: [
-                "1. Sauté onions, garlic, and ginger in a pot.",
-                "2. Add chicken pieces and cook until browned.",
-                "3. Stir in curry powder and cook for 2 minutes.",
-                "4. Add coconut milk and simmer until chicken is cooked through.",
-                "5. Serve with rice and garnish with fresh cilantro."
-            ],
-            hash: "chicken-curry-001",
-            iconEmoji: "🍛"
-        },
-        {
-            name: "Chicken Curry",
-            instructions: [
-                "1. Sauté onions, garlic, and ginger in a pot.",
-                "2. Add chicken pieces and cook until browned.",
-                "3. Stir in curry powder and cook for 2 minutes.",
-                "4. Add coconut milk and simmer until chicken is cooked through.",
-                "5. Serve with rice and garnish with fresh cilantro."
-            ],
-            hash: "chicken-curry-001",
-            iconEmoji: "🍛"
-        },
-        {
-            name: "Chicken Curry",
-            instructions: [
-                "1. Sauté onions, garlic, and ginger in a pot.",
-                "2. Add chicken pieces and cook until browned.",
-                "3. Stir in curry powder and cook for 2 minutes.",
-                "4. Add coconut milk and simmer until chicken is cooked through.",
-                "5. Serve with rice and garnish with fresh cilantro."
-            ],
-            hash: "chicken-curry-001",
-            iconEmoji: "🍛"
-        },
-        {
-            name: "Chicken Curry",
-            instructions: [
-                "1. Sauté onions, garlic, and ginger in a pot.",
-                "2. Add chicken pieces and cook until browned.",
-                "3. Stir in curry powder and cook for 2 minutes.",
-                "4. Add coconut milk and simmer until chicken is cooked through.",
-                "5. Serve with rice and garnish with fresh cilantro."
-            ],
-            hash: "chicken-curry-001",
-            iconEmoji: "🍛"
-        },
-        {
-            name: "Chicken Curry",
-            instructions: [
-                "1. Sauté onions, garlic, and ginger in a pot.",
-                "2. Add chicken pieces and cook until browned.",
-                "3. Stir in curry powder and cook for 2 minutes.",
-                "4. Add coconut milk and simmer until chicken is cooked through.",
-                "5. Serve with rice and garnish with fresh cilantro."
-            ],
-            hash: "chicken-curry-001",
-            iconEmoji: "🍛"
-        },
-        {
-            name: "Chicken Curry",
-            instructions: [
-                "1. Sauté onions, garlic, and ginger in a pot.",
-                "2. Add chicken pieces and cook until browned.",
-                "3. Stir in curry powder and cook for 2 minutes.",
-                "4. Add coconut milk and simmer until chicken is cooked through.",
-                "5. Serve with rice and garnish with fresh cilantro."
-            ],
-            hash: "chicken-curry-001",
-            iconEmoji: "🍛"
-        },
-        {
-            name: "Chicken Curry",
-            instructions: [
-                "1. Sauté onions, garlic, and ginger in a pot.",
-                "2. Add chicken pieces and cook until browned.",
-                "3. Stir in curry powder and cook for 2 minutes.",
-                "4. Add coconut milk and simmer until chicken is cooked through.",
-                "5. Serve with rice and garnish with fresh cilantro."
-            ],
-            hash: "chicken-curry-001",
-            iconEmoji: "🍛"
-        },
-    ]
-    return (
-        <div>
-            <h1 style={{marginLeft: "1%"}}>Recipes</h1>
+    const [recipes, setRecipes] = useState<Recipe[]>([]); // TODO: Fetch recipes from backend
+    const [loading, setLoading] = useState(true);
+    const [message, setMessage] = useState("");
+
+    useEffect(() => {
+        const fetchRecipes = async () => {
+            const response = await fetch('http://localhost:3000/api/recipes', {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) {
+                setMessage("Failed to fetch recipes.");
+                setLoading(false);
+            }
+            const data = await response.json();
+            setLoading(false);
+            setRecipes(data);
+        };
+
+        fetchRecipes().then();
+    }, [])
+
+    if (loading) {
+        return (
             <div>
-                {recipes.map((recipe, index) => (
-                    <RecipeItem index={index} name={recipe.name}
-                                hash={recipe.hash} iconEmoji={recipe.iconEmoji}/>
-                ))}
+                <p>Loading...</p>
             </div>
-        </div>
-    );
+        );
+    } else {
+        if (message) {
+            return (
+                <div>
+                    <p>{message}</p>
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    <h1 style={{marginLeft: "1%"}}>Recipes</h1>
+                    <div>
+                        {recipes.map((recipe, index) => (
+                            <RecipeItem index={index} name={recipe.name}
+                                        id={recipe.id} iconEmoji={recipe.iconEmoji}/>
+                        ))}
+                    </div>
+                </div>
+            )
+        }
+    }
 }

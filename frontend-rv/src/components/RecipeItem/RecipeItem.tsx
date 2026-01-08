@@ -4,19 +4,19 @@ import styles from "./RecipeItem.module.scss"
 type RecipeItemProps = {
     index: number;
     name: string;
-    hash: string;
+    id: number;
     iconEmoji: string;
 }
 
 export default function RecipeItem(props: RecipeItemProps) {
-    const {name, iconEmoji, index, hash} = props;
+    const {name, iconEmoji, index, id} = props;
     return (
         <ol className={styles.recipes}>
             <li key={index} className={styles.recipeItem}>
                 <h2>{iconEmoji} {name}</h2>
                 <div className={styles.foodButtons}>
-                    <Link to={`/ingredients/${hash}`} className={styles.viewIngredient}>🥕</Link>
-                    <Link to={`/recipe/${hash}`} className={styles.viewRecipe}>→</Link>
+                    <Link to={`/ingredients/${id}`} className={styles.viewIngredient}>🥕</Link>
+                    <Link to={`/recipe/${id}`} className={styles.viewRecipe}>→</Link>
                 </div>
             </li>
         </ol>

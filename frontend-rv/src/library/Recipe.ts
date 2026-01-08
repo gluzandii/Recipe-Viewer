@@ -1,6 +1,6 @@
 export type Recipe = {
+    id: number;
     name: string;
-    hash: string;
     instructions: string[];
     iconEmoji: string;
 }
