@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: postgres17
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: strongpassword
+      POSTGRES_DB: appdb
+
+    volumes:
+      - pgdata:/var/lib/postgresql
+
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U appuser -d appdb" ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+    # Expose ONLY if you need local access
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdata:
